@@ -56,14 +56,14 @@ module.exports = {
             });
     },
 
-    // Delete a User & all User's Thoughts
+    // Delete a User & all associated Thoughts
     deleteUser(req, res) {
         User.findOneAndDelete({ _id: req.params.userId })
-            .then((user) => {
-                if (!user) {
-                    return res.status(404).json({ message: 'No user exists with this ID!' })
-                }
-            })
+            .then((user) => 
+                !user
+                    ? res.status(404).json({ message: 'No user exists with this ID!' })
+                    : Thought.deleteMany({ _id: user.thoughts })
+            )
             .then(() => {
                 res.json({ message: 'User deleted!' });
             })
