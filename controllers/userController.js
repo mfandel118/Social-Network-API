@@ -12,6 +12,7 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
+
     // See 1 User by ID
     getUserbyID(req, res) {
         User.findOne({ _id: req.params.userId })
@@ -26,6 +27,7 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
+
     // Create New User
     createUser(req, res) {
         User.create(req.body)
@@ -35,6 +37,7 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
+
     // Update a User
     updateUser(req, res) {
         User.findOneAndUpdate(
@@ -52,6 +55,7 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
+
     // Delete a User & all User's Thoughts
     deleteUser(req, res) {
         User.findOneAndDelete({ _id: req.params.userId })
@@ -65,23 +69,40 @@ module.exports = {
                 res.status(500).json(err);
             });
     },
+
     // Add a Friend to User's Friend List
     addFriend(req, res) {
         User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $addToSet: { friends: friendId } },
+            { runValidators: true, new: true }
+        )
+            .then((user) =>
+                !friend
+                ? res.status(404).json({ message: 'No user exists with this ID!' })
+                : res.json(user)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+        });
+    },
+
+    // Delete a Friend to User's Friend List
+    deleteFriend(req, res) {
+        User.findOneAndUpdate(
           { _id: req.params.userId },
-          { $addToSet: { friends: friendId } },
+          { $pull: { friends: { userId: req.params.friendId } } },
           { runValidators: true, new: true }
         )
           .then((user) =>
-            !friend
-              ? res.status(404).json({ message: 'No user exists with this id!' })
+            !user
+              ? res.status(404).json({ message: 'No user exists with this ID!' })
               : res.json(user)
           )
           .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-      },
-    // Delete a Friend to User's Friend List
-
+                console.log(err);
+                res.status(500).json(err);
+    });
+    }
 };
