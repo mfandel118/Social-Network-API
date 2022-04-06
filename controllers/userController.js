@@ -64,9 +64,24 @@ module.exports = {
                 console.log(err);
                 res.status(500).json(err);
             });
-    }
+    },
     // Add a Friend to User's Friend List
-
+    addFriend(req, res) {
+        User.findOneAndUpdate(
+          { _id: req.params.userId },
+          { $addToSet: { friends: friendId } },
+          { runValidators: true, new: true }
+        )
+          .then((user) =>
+            !friend
+              ? res.status(404).json({ message: 'No user exists with this id!' })
+              : res.json(user)
+          )
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+      },
     // Delete a Friend to User's Friend List
-    
+
 };

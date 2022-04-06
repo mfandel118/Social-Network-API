@@ -65,4 +65,8 @@ module.exports = {
                 res.status(500).json(err);
             });
     }
+    // Create a reaction to a Thought
+
+    // Delete a reaction to a Thought
+
 }
