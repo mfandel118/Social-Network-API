@@ -19,7 +19,7 @@ module.exports = {
             .select('-__v')
             .then((thought) =>
                 !thought
-                    ? res.status(404).json({ message: 'No thought with that ID' })
+                    ? res.status(404).json({ message: 'No thought exists with that ID!' })
                     : res.json(thought)
             )
             .catch((err) => {
@@ -31,7 +31,20 @@ module.exports = {
     // Create New Thought
     createThought(req, res) {
         Thought.create(req.body)
-            .then((thought) => res.json(thought))
+            .then((thought) => {
+                return User.findOneAndUpdate(
+                    { _id: req.body.userId },
+                    { $addToSet: { thoughts: thought._id } },
+                    { new: true }
+                );
+            })
+            .then((user) =>
+                !user
+                ? res.status(404).json({
+                    message: 'Thought created, but no user found with that ID!',
+                    })
+                : res.json('Thought created!')
+            )
             .catch((err) => {
                 console.log(err);
                 res.status(500).json(err);
