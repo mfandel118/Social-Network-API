@@ -1,5 +1,5 @@
 // Import mongoose
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 const User = require('./User');
 
 // Schema to create Reaction model
@@ -20,16 +20,15 @@ const reactionSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+        // Date getter function here
     },
 },
 {
     toJSON: {
-        virtuals: true
+        getters: true
     },
     id: false
 })
 
-// Initialize Reaction model
-const User = model('reaction', reactionSchema);
-
-module.exports = Reaction;
+// export Reaction schema
+module.exports = reactionSchema;
