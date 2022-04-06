@@ -65,4 +65,8 @@ module.exports = {
                 res.status(500).json(err);
             });
     }
+    // Add a Friend to User's Friend List
+
+    // Delete a Friend to User's Friend List
+    
 };

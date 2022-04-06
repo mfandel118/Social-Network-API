@@ -15,7 +15,7 @@ router.route('/:userId')
     .delete(deleteThought);
 
 // route: /api/thoughts/:thoughtId/reactions
-
+// post & delete here
 
 // export router
 module.exports = router;

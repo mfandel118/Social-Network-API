@@ -15,7 +15,7 @@ router.route('/:userId')
     .delete(deleteUser);
 
 // route: /api/users/:userId/friends/:friendId
-
+// post & delete here
 
 // export router
 module.exports = router;
