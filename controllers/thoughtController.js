@@ -95,10 +95,10 @@ module.exports = {
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
             { runValidators: true, new: true }
         )
-            .then((user) =>
-                !user
-                ? res.status(404).json({ message: 'No user exists with this ID!' })
-                : res.json(user)
+            .then((thought) =>
+                !thought
+                ? res.status(404).json({ message: 'No thought exists with this ID!' })
+                : res.json(thought)
             )
             .catch((err) => {
                 console.log(err);
