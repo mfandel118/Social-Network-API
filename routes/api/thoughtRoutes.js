@@ -14,9 +14,12 @@ router.route('/:thoughtId')
     .put(updateThought)
     .delete(deleteThought);
 
+// route: /api/thoughts/:thoughtId/reactions
+router.route('/:thoughtId/reactions')
+    .post(addReaction)
+
 // route: /api/thoughts/:thoughtId/reactions/:reactionId
 router.route('/:thoughtId/reactions/:reactionId')
-    .post(addReaction)
     .delete(deleteReaction)
 
 // export router
