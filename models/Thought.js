@@ -1,5 +1,7 @@
 // Import mongoose
 const { Schema, model } = require('mongoose');
+// Import Reaction schema
+const Reaction = require('./Reaction');
 
 // Schema to create Thought model
 const thoughtSchema = new Schema({
@@ -19,7 +21,7 @@ const thoughtSchema = new Schema({
         // Date getter function here
     },
     reactions: [
-        // reaction Schema here
+        Reaction
     ]
 },
 {
