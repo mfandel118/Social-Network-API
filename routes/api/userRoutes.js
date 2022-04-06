@@ -1,7 +1,7 @@
 // import express router
 const router = require('express').Router();
 // import controller methods
-const { getUsers, getUserbyID, createUser, updateUser,deleteUser }
+const { getUsers, getUserbyID, createUser, updateUser,deleteUser } = require('../../controllers/userController')
 
 // route: /api/users
 router.route('/')
