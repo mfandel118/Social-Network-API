@@ -19,7 +19,7 @@ const userSchema = new Schema({
        // Thought model reference here
     }],
     friends: [{
-        // Friend model reference here
+        // Friend info reference here
     }]
 },
 {
