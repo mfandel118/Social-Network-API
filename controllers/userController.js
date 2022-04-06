@@ -1,7 +1,7 @@
 // import User model
 const User = require('../models/User');
 
-// export user controller
+// export user methods
 module.exports = {
     // See All Users
     getUsers(req, res) {
