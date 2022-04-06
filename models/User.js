@@ -29,7 +29,7 @@ const userSchema = new Schema({
     id: false
 });
 
-// Create virtual that retrieves length of user's friend array
+// Create virtual that retrieves length of user's friends array
 userSchema
     .virtual('friendCount')
     // Getter function
