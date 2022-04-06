@@ -64,6 +64,9 @@ module.exports = {
                     return res.status(404).json({ message: 'No user exists with this ID!' })
                 }
             })
+            .then(() => {
+                res.json({ message: 'User deleted!' });
+            })
             .catch((err) => {
                 console.log(err);
                 res.status(500).json(err);
