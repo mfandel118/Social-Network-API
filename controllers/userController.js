@@ -81,7 +81,7 @@ module.exports = {
             { runValidators: true, new: true }
         )
             .then((user) =>
-                !friend
+                !user
                 ? res.status(404).json({ message: 'No user exists with this ID!' })
                 : res.json(user)
             )
