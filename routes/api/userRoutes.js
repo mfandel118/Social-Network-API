@@ -1,7 +1,7 @@
 // import express router
 const router = require('express').Router();
 // import controller methods
-const { getUsers, getUserbyID, createUser, updateUser, deleteUser } = require('../../controllers/userController')
+const { getUsers, getUserbyID, createUser, updateUser, deleteUser, addFriend, deleteFriend } = require('../../controllers/userController')
 
 // route: /api/users
 router.route('/')
@@ -15,7 +15,9 @@ router.route('/:userId')
     .delete(deleteUser);
 
 // route: /api/users/:userId/friends/:friendId
-// post & delete here
+router.route('/:userId/friends/:friendId')
+    .post(addFriend)
+    .delete(deleteFriend)
 
 // export router
 module.exports = router;
