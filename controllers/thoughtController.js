@@ -1,5 +1,6 @@
 // import Thought model
 const Thought = require('../models/Thought');
+const User = require('../models/User');
 
 // export Thought methods
 module.exports = {
