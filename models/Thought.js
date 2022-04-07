@@ -18,7 +18,6 @@ const thoughtSchema = new Schema({
     username: {
         type: String,
         required: true
-        // Date getter function here
     },
     reactions: [
         Reaction
