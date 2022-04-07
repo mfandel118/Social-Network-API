@@ -18,7 +18,12 @@ This project serves as an application program interface for a social networking 
 
 ## Usage
 
-Build a new social network with the help of this API. This API consists of several routes that allow you to: _ `POST` new users, friends to a user's friend list, thoughts from any user, or reactions to any thoughts. _ `GET` all users, all thoughts, a single user by ID, or a single thought by ID. _ `PUT` (update) a user or a thought. _ `DELETE` a user, a friend from a user's friend list, a thought, or a reaction to a thought.
+Build a new social network with the help of this API. This API consists of several routes that allow you to:
+
+- `POST` new users, friends to a user's friend list, thoughts from any user, or reactions to any thoughts.
+- `GET` all users, all thoughts, a single user by ID, or a single thought by ID.
+- `PUT` (update) a user or a thought.
+- `DELETE` a user, a friend from a user's friend list, a thought, or a reaction to a thought.
 
 ## Installation
 
